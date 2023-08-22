@@ -12,3 +12,7 @@ export type AppContextType = {
 export type ChildrenProps = {
     children: React.ReactNode;
 };
+
+export type MarkdownRendererProps = {
+    filePath: string;
+};
