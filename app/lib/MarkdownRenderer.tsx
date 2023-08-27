@@ -2,8 +2,11 @@
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { okaidia } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { MarkdownRendererProps } from "./types";
+
+const modifiedOkaidia = { ...okaidia };
+modifiedOkaidia[`pre[class*="language-"]`].background = "#0d0d0d";
 
 const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ filePath }) => {
     const [markdown, setMarkdown] = React.useState("");
@@ -28,7 +31,7 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ filePath }) => {
                 code({ node, inline, className, children, ...props }) {
                     const match = /language-(\w+)/.exec(className || "");
                     return !inline && match ? (
-                        <SyntaxHighlighter {...props} style={tomorrow} language={match[1]} PreTag="div">
+                        <SyntaxHighlighter {...props} style={modifiedOkaidia} language={match[1]} PreTag="div">
                             {String(children).replace(/\n$/, "")}
                         </SyntaxHighlighter>
                     ) : (

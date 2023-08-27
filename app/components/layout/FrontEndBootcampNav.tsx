@@ -20,7 +20,7 @@ const FrontEndBootcampNav = () => {
     };
 
     return (
-        <nav className="fixed top-[2.4rem] left-0 w-[25%] bg-gray-100 h-screen overflow-scroll shadow-xl border-r-2 border-r-gray-300">
+        <nav className="fixed top-[2.4rem] left-0 w-[25%] bg-[#0d0d0d] text-[#c6c6c6]  h-screen overflow-scroll shadow-xl border-r-2 border-r-black">
             <ol className="flex flex-col w-full p-5 gap-3 text-sm">
                 {chapters.map((chapter: ChapterStructureType, index: number) => (
                     <li
@@ -29,7 +29,9 @@ const FrontEndBootcampNav = () => {
                     >
                         <Link
                             href={`/front-end-bootcamp/${chapter.chapterLink}`}
-                            className="link col-span-4"
+                            className={`link ${
+                                chapter.chapterLink === endPath ? "text-cyan-500 font-bold transition" : "text-white"
+                            } hover:text-cyan-500 col-span-4`}
                             aria-label={`navigate to ${chapter.chapterTitle}`}
                         >
                             {index + 1}. {chapter.chapterTitle}
@@ -56,9 +58,9 @@ const FrontEndBootcampNav = () => {
                                 <li key={topic.link}>
                                     <Link
                                         href={`/front-end-bootcamp/${chapter.chapterLink}/${topic.link}`}
-                                        className={`link ${
+                                        className={`link hover:text-white ${
                                             pathname === `/front-end-bootcamp/${chapter.chapterLink}/${topic.link}`
-                                                ? "text-blue-600 font-bold"
+                                                ? "text-cyan-500 font-bold"
                                                 : ""
                                         }`}
                                         aria-label={`Navigate to ${topic.link}`}

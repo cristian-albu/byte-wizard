@@ -17,6 +17,7 @@ const Lesson = ({ params }: { params: { slug: string; lesson: string } }) => {
     return (
         <main className="p-10 pr-20 w-full">
             <div>
+                <p>{chapterObject[params.slug].chapterTitle}</p>
                 <h1 className="text-4xl my-5">{currentLessonData.title}</h1>
                 <p>{currentLessonData.description}</p>
             </div>

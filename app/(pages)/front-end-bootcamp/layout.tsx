@@ -13,7 +13,7 @@ const Layout = ({ children }: ChildrenProps) => {
     return (
         <div className="flex justify-between relative pl-[25%]">
             <FrontEndBootcampNav />
-            <div className="w-full">{children}</div>
+            <div className="w-full bg-[#181818] h-screen text-white">{children}</div>
         </div>
     );
 };
