@@ -65,7 +65,7 @@ export const chapters = {
         "Static props and methods: Using static members shared across instances",
         "Private, public, protected: Controlling access levels to class members",
     ],
-    "Algorithms & Data Structures I: Arrays": [
+    "Algorithms & Data Structures 1: Arrays": [
         "Symmetric Difference",
         "Inventory Update",
         "No repeats please",
@@ -110,7 +110,7 @@ export const chapters = {
         // No specific items mentioned
     ],
 
-    "Algorithms & Data Structures II: Stacks, Queues, Hash Tables": [
+    "Algorithms & Data Structures 2: Stacks, Queues, Hash Tables": [
         "Learn how a Stack Works",
         "Create a Stack Class",
         "Create a Queue Class",
@@ -199,7 +199,7 @@ export const chapters = {
     "Second project: API website": [
         // No specific items mentioned
     ],
-    "Algorithms & Data Structures III: Sorting and Linked Lists": [
+    "Algorithms & Data Structures 3: Sorting and Linked Lists": [
         "Bubble sort",
         "Selection sort",
         "Insertion sort",
@@ -226,7 +226,7 @@ export const chapters = {
         // No specific items mentioned
     ],
 
-    "Algorithms & Data Structures IV: Binary Search and Sliding Window": [
+    "Algorithms & Data Structures 4: Binary Search and Sliding Window": [
         "Binary search",
         "3Sum",
         "Container With Most Water",
@@ -312,7 +312,7 @@ export const chapters = {
         "Integrating testing into your development workflow",
         "Common pitfalls and how to avoid them",
     ],
-    "Algorithms & Data Structures V: Trees": [
+    "Algorithms & Data Structures 5: Trees": [
         "Add a New element to a Binary Search Tree",
         "Find the minimum and maximum value in a binary search tree",
         "Check if an element is present in a binary search tree",
@@ -359,7 +359,7 @@ export const chapters = {
         "Finding jobs and opportunities",
         "Connecting to people with simmilar interests",
     ],
-    "Algorithms & Data Structures VI: Backtracking": [
+    "Algorithms & Data Structures 6: Backtracking": [
         "Subsets",
         "Combination Sum",
         "Permutations",
