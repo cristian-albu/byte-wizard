@@ -1,6 +1,6 @@
 import React from "react";
 import { notFound } from "next/navigation";
-import chapters from "../chapters";
+import chapters from "../../../lib/chapters/chapters";
 import { ChapterStructureType } from "@/app/lib/types";
 
 const Chapter = ({ params }: { params: { slug: string } }) => {

@@ -1,13 +1,16 @@
 "use client";
-import chapters from "@/app/(pages)/front-end-bootcamp/chapters";
+
+import chapters from "@/app/lib/chapters/chapters";
 import { ChapterStructureType, ChapterType } from "@/app/lib/types";
 import Link from "next/link";
 import React from "react";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
+import { usePathname } from "next/navigation";
 
 const FrontEndBootcampNav = () => {
-    const [expandedChapter, setExpandedChapter] = React.useState("");
-
+    const pathname = usePathname();
+    const endPath = pathname.split("/")[2]; // after ../front-end-bootcamp/;
+    const [expandedChapter, setExpandedChapter] = React.useState(endPath);
     const handleExpand = (id: string) => {
         if (expandedChapter === id) {
             setExpandedChapter("");
@@ -15,8 +18,9 @@ const FrontEndBootcampNav = () => {
             setExpandedChapter(id);
         }
     };
+
     return (
-        <nav className="fixed top-[2.4rem] left-0 w-[25%] bg-gray-100 h-screen overflow-scroll">
+        <nav className="fixed top-[2.4rem] left-0 w-[25%] bg-gray-100 h-screen overflow-scroll shadow-xl border-r-2 border-r-gray-300">
             <ol className="flex flex-col w-full p-5 gap-3 text-sm">
                 {chapters.map((chapter: ChapterStructureType, index: number) => (
                     <li
@@ -41,10 +45,10 @@ const FrontEndBootcampNav = () => {
                         </button>
 
                         <ol
-                            className={`relative flex flex-col gap-3 pl-5 text-sm col-span-5  origin-top-left ${
+                            className={`relative flex flex-col gap-3 pl-5 text-sm col-span-5 ${
                                 chapter.chapterLink === expandedChapter
-                                    ? "py-3 pr-2 h-auto scale-100 opacity-100 transition delay-[50]"
-                                    : "py-0 pr-0 scale-0 h-0 opacity-0 "
+                                    ? "py-3 pr-2 h-auto opacity-100 transition delay-[50]"
+                                    : "py-0 pr-0  h-0 opacity-0 "
                             }`}
                             id={chapter.chapterLink}
                         >
@@ -52,7 +56,11 @@ const FrontEndBootcampNav = () => {
                                 <li key={topic.link}>
                                     <Link
                                         href={`/front-end-bootcamp/${chapter.chapterLink}/${topic.link}`}
-                                        className="link"
+                                        className={`link ${
+                                            pathname === `/front-end-bootcamp/${chapter.chapterLink}/${topic.link}`
+                                                ? "text-blue-600 font-bold"
+                                                : ""
+                                        }`}
                                         aria-label={`Navigate to ${topic.link}`}
                                     >
                                         {index + 1}.{topicIndex + 1}. {topic.title}

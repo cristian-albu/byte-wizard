@@ -23,6 +23,7 @@ export type ChapterType = {
     title: string;
     link: string;
     component?: React.ReactNode;
+    description: string;
 };
 
 export type ChapterStructureType = {

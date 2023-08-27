@@ -1,5 +1,5 @@
 import React from "react";
-import { chapterObject } from "../../chapters";
+import { chapterObject } from "../../../../lib/chapters/chapters";
 import { ChapterType } from "@/app/lib/types";
 import { notFound } from "next/navigation";
 
@@ -14,7 +14,15 @@ const Lesson = ({ params }: { params: { slug: string; lesson: string } }) => {
         (lesson: ChapterType) => lesson.link === params.lesson
     );
     if (!currentLessonData) notFound();
-    return <div>{currentLessonData.component}</div>;
+    return (
+        <main className="p-10 pr-20 w-full">
+            <div>
+                <h1 className="text-4xl my-5">{currentLessonData.title}</h1>
+                <p>{currentLessonData.description}</p>
+            </div>
+            <div>{currentLessonData.component}</div>
+        </main>
+    );
 };
 
 export default Lesson;
