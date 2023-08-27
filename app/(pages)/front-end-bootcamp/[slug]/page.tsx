@@ -3,7 +3,7 @@ import chapters from "../chapters";
 
 const testmap = ["page1", "page2"];
 
-export const dynamicParams = false;
+// export const dynamicParams = false;
 
 export async function generateStaticParams() {
     return testmap.map((slug) => ({
