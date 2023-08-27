@@ -1,3 +1,5 @@
+import React from "react";
+
 export type TNavData = {
     text: string;
     link: string;
@@ -20,6 +22,7 @@ export type MarkdownRendererProps = {
 export type ChapterType = {
     title: string;
     link: string;
+    component?: React.ReactNode;
 };
 
 export type ChapterStructureType = {

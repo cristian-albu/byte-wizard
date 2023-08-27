@@ -10,8 +10,11 @@ export async function generateStaticParams({ params: { slug } }: { params: { slu
 }
 
 const Lesson = ({ params }: { params: { slug: string; lesson: string } }) => {
-    if (!chapterObject[params.slug].chapters.find((lesson: ChapterType) => lesson.link === params.lesson)) notFound();
-    return <div>page</div>;
+    const currentLessonData = chapterObject[params.slug].chapters.find(
+        (lesson: ChapterType) => lesson.link === params.lesson
+    );
+    if (!currentLessonData) notFound();
+    return <div>{currentLessonData.component}</div>;
 };
 
 export default Lesson;
