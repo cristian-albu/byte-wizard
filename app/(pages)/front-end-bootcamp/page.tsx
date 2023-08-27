@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import chapters from "./chapters";
+import MarkdownRenderer from "@/app/lib/MarkdownRenderer";
 
 const FrontEndBootCamp = () => {
     return (
@@ -20,6 +21,7 @@ const FrontEndBootCamp = () => {
                         ))}
                     </ol>
                 ))}
+                <MarkdownRenderer filePath="/md/TestMd.md" />
             </div>
         </div>
     );
