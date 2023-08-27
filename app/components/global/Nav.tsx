@@ -7,6 +7,7 @@ import React from "react";
 export const navData: TNavData[] = [
     { text: "Home", link: "/", icon: "" },
     { text: "Ateliere", link: "/ateliere", icon: "" },
+    { text: "Front-end Bootcamp", link: "/front-end-bootcamp", icon: "" },
     { text: "Despre noi", link: "/despre-noi", icon: "" },
     { text: "Contact", link: "/contact", icon: "" },
 ];
@@ -14,7 +15,6 @@ export const navData: TNavData[] = [
 const Nav = () => {
     const { isMobileWidth } = useAppContext();
 
-    console.log(isMobileWidth);
     return (
         <nav className="fixed top-0 left-0 z-[99] w-full bg-black text-white h-[2.5rem] flex justify-between items-center">
             <ul className="w-full flex justify-between items-center h-full">

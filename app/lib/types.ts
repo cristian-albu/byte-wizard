@@ -16,3 +16,15 @@ export type ChildrenProps = {
 export type MarkdownRendererProps = {
     filePath: string;
 };
+
+export type ChapterType = {
+    title: string;
+    link: string;
+};
+
+export type ChapterStructureType = {
+    chapterTitle: string;
+    chapterLink: string;
+    chapterImage: string;
+    chapters: ChapterType[];
+};
