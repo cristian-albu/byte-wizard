@@ -17,10 +17,12 @@ const Nav = () => {
 
     return (
         <nav className="fixed top-0 left-0 z-[99] w-full bg-black text-white h-[2.5rem] flex justify-between items-center">
-            <ul className="w-full flex justify-right items-center h-full">
-                {navData.map((e: TNavData) => (
-                    <li key={e.text}>
-                        <Link href={e.link}>{e.text}</Link>
+            <ul className="w-full flex justify-start items-center h-full">
+                {navData.map((e: TNavData, i: number) => (
+                    <li key={e.text} className={`${i === 0 ? "mr-auto" : ""}`}>
+                        <Link href={e.link} className="p-2">
+                            {e.text}
+                        </Link>
                     </li>
                 ))}
             </ul>

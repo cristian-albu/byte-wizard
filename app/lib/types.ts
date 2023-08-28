@@ -32,3 +32,8 @@ export type ChapterStructureType = {
     chapterImage: string;
     chapters: ChapterType[];
 };
+
+export type Params = {
+    slug: string;
+    lesson: string;
+};

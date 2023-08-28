@@ -1,10 +1,11 @@
 import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Josefin_Sans } from "next/font/google";
 import Nav from "./components/global/Nav";
 import { AppContextProvider } from "./contexts/AppContext";
 
 const inter = Inter({ subsets: ["latin"] });
+const josefin = Josefin_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
-            <body className={inter.className + " pt-[2.5rem]"}>
+            <body className={josefin.className + " pt-[2.5rem]"}>
                 <AppContextProvider>
                     <Nav />
                     {children}

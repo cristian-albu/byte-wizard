@@ -11,9 +11,9 @@ export async function generateStaticParams() {
 
 const Layout = ({ children }: ChildrenProps) => {
     return (
-        <div className="flex justify-between relative pl-[25%]">
+        <div className="flex justify-between relative bg-[#111]">
             <FrontEndBootcampNav />
-            <div className="w-full bg-[#181818] h-screen text-white">{children}</div>
+            <div className="w-full  min-h-screen text-white">{children}</div>
         </div>
     );
 };
