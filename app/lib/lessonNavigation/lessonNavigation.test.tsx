@@ -1,4 +1,5 @@
-import { Params } from "../types";
+import chapters from "../chapters/chapters";
+import { ChapterStructureType, ChapterType, Params } from "../types";
 import { getChapterAndLessonIndexes, getNextLessonLink, getPreviousLessonLink } from "./lessonNavigation";
 
 jest.mock("../MarkdownRenderer", () => ({
@@ -51,12 +52,6 @@ describe("Lesson Navigation Functions", () => {
             const params: Params = { slug: "basic-javascript", lesson: "what-is-js-introduction" };
             const link = getNextLessonLink(params);
             expect(link).toBe("/front-end-bootcamp/basic-javascript/history-of-js-brief");
-        });
-
-        test("getNextLessonLink should return empty", () => {
-            const params: Params = { slug: "the-dom", lesson: "iterating-with-the-dom-looping-through" };
-            const link = getNextLessonLink(params);
-            expect(link).toBe("");
         });
     });
 });

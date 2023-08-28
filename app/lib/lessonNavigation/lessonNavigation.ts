@@ -1,4 +1,4 @@
-import chapters from "@/app/lib/chapters/chapters";
+import chapters, { lessonList } from "@/app/lib/chapters/chapters";
 import { Params } from "../types";
 
 export const getChapterAndLessonIndexes = (params: Params): number[] => {
@@ -13,17 +13,19 @@ export const getChapterAndLessonIndexes = (params: Params): number[] => {
 };
 
 export const getPreviousLessonLink = (params: Params): string => {
-    let [chapterIndex, lessonIndex] = getChapterAndLessonIndexes(params);
-    if (lessonIndex === 0) chapterIndex--;
-    if (chapterIndex < 0) return "";
-    lessonIndex === 0 ? (lessonIndex = chapters[chapterIndex].chapters.length - 1) : lessonIndex--;
+    const currLessonIndex = lessonList.findIndex(function (lesson) {
+        return lesson.lesson === params.lesson;
+    });
 
-    return `/front-end-bootcamp/${chapters[chapterIndex].chapterLink}/${chapters[chapterIndex].chapters[lessonIndex].link}`;
+    if (currLessonIndex === 0) return "";
+    return `/front-end-bootcamp/${lessonList[currLessonIndex - 1].chapter}/${lessonList[currLessonIndex - 1].lesson}`;
 };
 
 export const getNextLessonLink = (params: Params): string => {
-    let [chapterIndex, lessonIndex] = getChapterAndLessonIndexes(params);
-    lessonIndex === chapters[chapterIndex].chapters.length - 1 ? ((lessonIndex = 0), chapterIndex++) : lessonIndex++;
-    if (chapterIndex > chapters.length - 1 || !chapters[chapterIndex].chapters[lessonIndex]) return "";
-    return `/front-end-bootcamp/${chapters[chapterIndex].chapterLink}/${chapters[chapterIndex].chapters[lessonIndex].link}`;
+    const currLessonIndex = lessonList.findIndex(function (lesson) {
+        return lesson.lesson === params.lesson;
+    });
+
+    if (currLessonIndex === lessonList.length - 1) return "";
+    return `/front-end-bootcamp/${lessonList[currLessonIndex + 1].chapter}/${lessonList[currLessonIndex + 1].lesson}`;
 };

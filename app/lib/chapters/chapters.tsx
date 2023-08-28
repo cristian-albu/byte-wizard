@@ -2003,3 +2003,16 @@ const chaptersObject = (chapters: ChapterStructureType[]) => {
 };
 
 export const chapterObject = chaptersObject(chapters);
+
+const createLessonList = (chapters: ChapterStructureType[]) => {
+    const lessonsArr = [];
+    for (let i = 0; i < chapters.length; i++) {
+        for (let j = 0; j < chapters[i].chapters.length; j++) {
+            lessonsArr.push({ chapter: chapters[i].chapterLink, lesson: chapters[i].chapters[j].link });
+        }
+    }
+
+    return lessonsArr;
+};
+
+export const lessonList = createLessonList(chapters);
