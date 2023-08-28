@@ -12,7 +12,7 @@ var name = "John",
     city = "New York";
 ```
 
-#### Primitive Data Types
+### Primitive Data Types
 
 JavaScript has several primitive data types, which are the building blocks of all other data in the language. They are simple and immutable (cannot be changed once created). The primitive data types in JavaScript are:
 

@@ -28,6 +28,8 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ filePath }) => {
     return (
         <ReactMarkdown
             components={{
+                p: ({ node, ...props }) => <p className="my-5" {...props} />,
+                h3: ({ node, ...props }) => <h3 className="text-2xl mt-10 mb-5" {...props} />,
                 code({ node, inline, className, children, ...props }) {
                     const match = /language-(\w+)/.exec(className || "");
                     return !inline && match ? (
