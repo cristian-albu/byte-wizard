@@ -24,7 +24,6 @@ export const getPreviousLessonLink = (params: Params): string => {
 export const getNextLessonLink = (params: Params): string => {
     let [chapterIndex, lessonIndex] = getChapterAndLessonIndexes(params);
     lessonIndex === chapters[chapterIndex].chapters.length - 1 ? ((lessonIndex = 0), chapterIndex++) : lessonIndex++;
-    if (chapterIndex > chapters.length - 1) return "";
-
+    if (chapterIndex > chapters.length - 1 || !chapters[chapterIndex].chapters[lessonIndex]) return "";
     return `/front-end-bootcamp/${chapters[chapterIndex].chapterLink}/${chapters[chapterIndex].chapters[lessonIndex].link}`;
 };

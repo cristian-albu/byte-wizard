@@ -1,44 +1,13 @@
 import { Params } from "../types";
 import { getChapterAndLessonIndexes, getNextLessonLink, getPreviousLessonLink } from "./lessonNavigation";
 
-jest.mock("../chapters/chapters", () => ({
+jest.mock("../MarkdownRenderer", () => ({
     __esModule: true,
-    default: [
-        {
-            chapterLink: "workspace-setup",
-            chapterImage: "",
-            chapters: [
-                {
-                    link: "install-node-yarn",
-                },
-                {
-                    link: "linux-and-bash",
-                },
-                {
-                    link: "git-and-github",
-                },
-                {
-                    link: "chrome-and-local",
-                },
-            ],
-        },
-        {
-            chapterLink: "basic-javascript",
-            chapters: [
-                {
-                    link: "what-is-js-introduction",
-                },
-                {
-                    link: "history-of-js-brief",
-                },
-            ],
-        },
-    ],
+    default: jest.fn(),
 }));
 
 describe("Lesson Navigation Functions", () => {
     const params: Params = { slug: "workspace-setup", lesson: "chrome-and-local" };
-
     describe("getChapterAndLessonIndexes", () => {
         test("getChapterAndLessonIndexes should return correct indexes", () => {
             const [chapterIndex, lessonIndex] = getChapterAndLessonIndexes(params);
@@ -85,7 +54,7 @@ describe("Lesson Navigation Functions", () => {
         });
 
         test("getNextLessonLink should return empty", () => {
-            const params: Params = { slug: "basic-javascript", lesson: "history-of-js-brief" };
+            const params: Params = { slug: "the-dom", lesson: "iterating-with-the-dom-looping-through" };
             const link = getNextLessonLink(params);
             expect(link).toBe("");
         });
