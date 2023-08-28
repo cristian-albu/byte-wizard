@@ -10,8 +10,8 @@ import { usePathname } from "next/navigation";
 
 const FrontEndBootcampNav = () => {
     const pathname = usePathname();
-    const endPath = pathname.split("/")[2]; // after ../front-end-bootcamp/;
-    const [expandedChapter, setExpandedChapter] = React.useState(endPath);
+    const chapterPath = pathname.split("/")[2]; // after ../front-end-bootcamp/;
+    const [expandedChapter, setExpandedChapter] = React.useState(chapterPath);
     const handleExpand = (id: string) => {
         if (expandedChapter === id) {
             setExpandedChapter("");
@@ -21,6 +21,10 @@ const FrontEndBootcampNav = () => {
     };
 
     const [isMenuOpen, setMenuOpen] = React.useState(true);
+
+    React.useEffect(() => {
+        setExpandedChapter(pathname.split("/")[2]);
+    }, [pathname]);
 
     return (
         <nav
@@ -54,7 +58,7 @@ const FrontEndBootcampNav = () => {
                             <Link
                                 href={`/front-end-bootcamp/${chapter.chapterLink}`}
                                 className={`link ${
-                                    chapter.chapterLink === endPath ? "text-cyan-500 font-bold transition" : "text-white"
+                                    chapter.chapterLink === chapterPath ? "text-cyan-500 transition" : "text-white"
                                 } hover:text-cyan-500 col-span-4`}
                                 aria-label={`navigate to ${chapter.chapterTitle}`}
                             >
@@ -84,7 +88,7 @@ const FrontEndBootcampNav = () => {
                                             href={`/front-end-bootcamp/${chapter.chapterLink}/${topic.link}`}
                                             className={`link hover:text-white ${
                                                 pathname === `/front-end-bootcamp/${chapter.chapterLink}/${topic.link}`
-                                                    ? "text-cyan-500 font-bold"
+                                                    ? "text-cyan-500 "
                                                     : ""
                                             }`}
                                             aria-label={`Navigate to ${topic.link}`}

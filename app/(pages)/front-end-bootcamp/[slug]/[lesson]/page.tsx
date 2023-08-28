@@ -12,36 +12,46 @@ export async function generateStaticParams({ params: { slug } }: { params: { slu
     }));
 }
 
+const NextAndPrevLinks = ({ params }: { params: Params }) => {
+    const prevLessonLink = getPreviousLessonLink(params);
+    const nextLessonLink = getNextLessonLink(params);
+    console.log(nextLessonLink);
+    return (
+        <div className="w-full flex justify-between items-center ">
+            {prevLessonLink && (
+                <Link className="btnPrimary" href={prevLessonLink}>
+                    <AiOutlineArrowLeft />
+                    Previous lesson
+                </Link>
+            )}
+            {nextLessonLink && (
+                <Link className="btnPrimary" href={nextLessonLink}>
+                    <AiOutlineArrowRight />
+                    Next lesson
+                </Link>
+            )}
+        </div>
+    );
+};
+
 const Lesson = ({ params }: { params: Params }) => {
     const currentLessonData = chapterObject[params.slug].chapters.find(
         (lesson: ChapterType) => lesson.link === params.lesson
     );
     if (!currentLessonData) notFound();
 
-    const prevLessonLink = getPreviousLessonLink(params);
-    const nextLessonLink = getNextLessonLink(params);
     return (
         <main className="p-10 pr-20 w-full">
             <div>
-                <p>{chapterObject[params.slug].chapterTitle}</p>
+                <NextAndPrevLinks params={params} />
+                <p className="mt-10">{chapterObject[params.slug].chapterTitle}</p>
+
                 <h1 className="text-4xl my-5">{currentLessonData.title}</h1>
                 <p>{currentLessonData.description}</p>
             </div>
             <div>{currentLessonData.component}</div>
-            <div className="w-full flex justify-between items-center pt-10 border-t-2 border-t-black mt-10">
-                {prevLessonLink && (
-                    <Link className="btnPrimary" href={prevLessonLink}>
-                        <AiOutlineArrowLeft />
-                        Previous lesson
-                    </Link>
-                )}
-                {nextLessonLink && (
-                    <Link className="btnPrimary" href={nextLessonLink}>
-                        <AiOutlineArrowRight />
-                        Next lesson
-                    </Link>
-                )}
-            </div>
+            <div className="pt-10 border-t-2 border-t-black mt-10" />
+            <NextAndPrevLinks params={params} />
         </main>
     );
 };
